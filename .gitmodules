@@ -1,0 +1,3 @@
+[submodule "kuaci"]
+	path = kuaci
+	url = https://github.com/tenapril/kuaci.git

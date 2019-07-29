@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>Kuaci Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <link rel="stylesheet" href="/static/css/normalize.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/static/css/cayman.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+  <section class="page-header">
+    <h1 class="project-name">Kuaci Web</h1>
+    <h2 class="project-tagline">Indonesian KTP Validator</h2>
+    <a href="https://github.com/ngurajeka/kuaci-web" class="btn">View on GitHub</a>
+  </section>
+
+  <section class="main-content">
+
+    <form action="/" method="POST">
+      <input class="form-input" type="text" name="ktp" value="{{ data.ktp }}" required="" placeholder="KTP Number" />
+      <button class="btn">Check</button>
+    </form>
+
+    {% if is_submit %}
+      {% if data.is_valid %}
+        <table>
+          <thead>
+            <tr>
+              <th>Area Code</th>
+              <th>Province</th>
+              <th>District / City</th>
+              <th>Sub-District</th>
+              <th>Gender</th>
+              <th>DOB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ data.area_code }}</td>
+              <td>{{ data.province }}</td>
+              <td>{{ data.district }}</td>
+              <td>{{ data.subdistrict }}</td>
+              <td>{{ data.gender }}</td>
+              <td>{{ data.dob }}</td>
+            </tr>
+          </tbody>
+        </table>
+      {% else %}
+        <div class="warning">
+          <p>invalid ktp number, please try again</p>
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <footer class="site-footer">
+      <span class="site-footer-owner"><a href="https://github.com/ngurajeka/kuaci-web">Kuaci Web</a> is maintained by <a href="https://github.com/ngurajeka">ngurajeka</a>.</span>
+      <span class="site-footer-credits"><a href="https://github.com/tenapril/kuaci">kuaci</a> library is maintained by <a href="https://github.com/tenapril">tenapril</a></span>
+      <br>
+      <span class="site-footer-credits">This page was created using theme by <a href="https://github.com/jasonlong/cayman-theme">Cayman</a>.</span>
+    </footer>
+
+  </section>
+
+</body>
+</html>
