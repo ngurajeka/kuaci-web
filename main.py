@@ -19,5 +19,9 @@ def home():
     ctx['district'] = location[2]
     ctx['subdistrict'] = location[3]
     ctx['gender'] = kuaci.gender_checker(ktp[6:7])
-    ctx['dob'] = kuaci.dob_checker(ktp[6:12]).strftime("%m/%d/%Y")
+    try:
+        dob = kuaci.dob_checker(ktp[6:12])
+        ctx['dob'] = dob.strftime("%m/%d/%Y")
+    except:
+        ctx['dob'] = '-'
     return render_template('index.html', is_submit=True, data=ctx)
